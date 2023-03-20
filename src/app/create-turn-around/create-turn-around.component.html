@@ -1,0 +1,203 @@
+<div class="container-fluid bg">
+    <h2>Create Turn Around</h2>
+</div>
+<br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <label>Airlines : </label>&nbsp;
+            <select class="form-control-sm" [(ngModel)]="airline" value="--select--">
+                <option value="" selected disabled>--select--</option>
+                <option *ngFor="let airlines of Airlines">{{airlines}}</option>
+            </select><br>
+            <span *ngIf="search && airline === undefined" class="text-danger" style="font-size: small;">
+                *This field is required.
+            </span>
+        </div>
+        <div class="col-6">
+            <label>From date : </label>&nbsp;
+            <input type="date" [max]="end" [(ngModel)]="start">&nbsp;
+            <label>To date : </label>&nbsp;
+            <input type="date" [min]="start" [(ngModel)]="end">&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-secondary btn-sm" style="margin-bottom: 1%;"
+                (click)="onSearch(start,end)">Search</button><br>
+            <span *ngIf="search && start === undefined" class="text-danger" style="font-size: small;">
+                *This field is required.
+            </span>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="!search" class="row" style=" padding-bottom: 10%;">
+        <div class="col">
+            <h4 class="bg">Arrival Flights</h4>
+            <select class="form-control" [(ngModel)]="Arr_Flight">
+                <option value="" selected disabled>--Arrival Flights--</option>
+                <option *ngFor="let arr of Arrival_Flights">{{arr.flight_Code}} - {{arr.scheduled_Date.slice(0,10)}} |
+                    {{arr.airlines}} | {{arr.origin}}
+                </option>
+            </select>
+        </div>
+        <div class="col">
+            <h4 class="bg">Departure Flights</h4>
+            <select class="form-control" [(ngModel)]="Dep_Flight">
+                <option value="" selected disabled>--Departure Flights--</option>
+                <option *ngFor="let dep of Departure_Flights">{{dep.flight_Code}} - {{dep.scheduled_Date.slice(0,10)}} |
+                    {{dep.airlines}} | {{dep.destination}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="search" class="row" style=" padding-bottom: 10%;">
+        <div class="col">
+            <h4 class="bg">Arrival Flights</h4>
+            <select class="form-control" [(ngModel)]="Arr_Flight">
+                <option value="" selected disabled>--Arrival Flights--</option>
+                <option *ngFor="let arr of Arrival_FlightsByDate">{{arr.flight_Code}} -
+                    {{arr.scheduled_Date.slice(0,10)}} | {{arr.airlines}} | {{arr.origin}}
+                </option>
+            </select>
+        </div>
+        <div class="col">
+            <h4 class="bg">Departure Flights</h4>
+            <select class="form-control" [(ngModel)]="Dep_Flight">
+                <option value="" selected disabled>--Departure Flights--</option>
+                <option *ngFor="let dep of Departure_FlightsByDate">{{dep.flight_Code}} -
+                    {{dep.scheduled_Date.slice(0,10)}} | {{dep.airlines}} | {{dep.destination}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+</div>
+<br>
+<div class="container-fluid" style="text-align: right;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+        (click)="onCreate()">
+        Create
+    </button>
+
+    <!-- Modal1 -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Check the Airlines</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="onClose()"></button>
+                </div>
+                <div class="modal-body" style="text-align: left;">
+                    <p> Arrival_Flight Airline : {{Arr_Flight.slice(18)}}</p>
+                    <p> Departure_Flight Airline : {{Dep_Flight.slice(18)}}</p>
+                    <span *ngIf="!airline_match" class="text-danger" style="font-size: small;">*Airlines must be
+                        same.</span>
+                    <span *ngIf="airline_match" class="text-success" style="font-size: small;">*Press Continue.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button [disabled]="!airline_match" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalToggle2">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade " id="exampleModalToggle2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Turn Info</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="text-align: left;">
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Turn Style</label>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" value="Fast Spin" type="radio" name="Spin"
+                                        (change)="onChange($event)">
+                                    Fast Spin
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" value="Slow Turn" type="radio" name="Spin"
+                                        (change)="onChange($event)">
+                                    Slow Turn
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Stand</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control " name="Stand" [(ngModel)]="stand_value">
+                                <option value="" selected disabled>--select--</option>
+                                <option *ngFor="let stand of Stands">{{stand}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Gate</label>
+                        </div>
+                        <div class="col-8">
+                            <select class="form-control " name="Gate" [(ngModel)]="gate_value">
+                                <option value="" selected disabled>--select--</option>
+                                <option *ngFor="let gate of Gates">{{gate}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="onMatch()">Match</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="onClose()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <h4>Turn-Around</h4>
+    <table class="table table-bordered border">
+        <thead>
+            <tr>
+                <th>Turn Style</th>
+                <th>Linked Flights</th>
+                <th>Airline</th>
+                <th>Aircraft</th>
+                <th>Stand</th>
+                <th>Gate</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of TurnAroundData">
+                <td>{{data.turnStyle}}</td>
+                <td>{{data.linkedFlights}}</td>
+                <td>{{data.airline}}</td>
+                <td>{{data.aircraft}}</td>
+                <td>{{data.stand}}</td>
+                <td>{{data.gate}}</td>
+                <td>{{data.origin}}</td>
+                <td>{{data.destination}}</td>
+                <td><a [routerLink]="['/TurnAroundDesk',data.turnAroundId]">Details</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

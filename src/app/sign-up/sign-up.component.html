@@ -1,0 +1,104 @@
+<div class="page-bg">
+  <div class="container">
+    <h1>Sign-up with your details!</h1>
+    <form [formGroup]="form" autocomplete="off">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name" placeholder="Your name" class="form-control form-control-sm"
+          [class.is-invalid]="submitted && name.errors">
+        <div *ngIf="submitted && name.errors" class="invalid-feedback">
+          <div *ngIf="name.errors?.['required']">
+            This field is required.
+          </div>
+        </div>
+      </div>
+      <!-- [class.is-invalid]="name.invalid && (name.dirty || name.touched)" - to show required field in input area -->
+      <!-- class="invalid-feedback" - Shows the text in red color -->
+      <!-- submitted - to check the form is submitted -->
+
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="email" formControlName="email" placeholder="your-name@provider.com"
+          class="form-control form-control-sm" [class.is-invalid]="submitted && email.errors">
+        <div *ngIf="submitted && email.errors" class="invalid-feedback">
+          <div *ngIf="email.errors?.['required']">
+            This field is required.
+          </div>
+          <div *ngIf="email.errors?.['pattern']">
+            Please enter valid email.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Date-of-Birth</label>
+        <input id="dob" type="date" formControlName="dob" class="form-control form-control-sm"
+          [class.is-invalid]="submitted && dob.errors" />
+        <div *ngIf="submitted && dob.errors" class="invalid-feedback">
+          <div *ngIf="dob.errors?.['required']">
+            This field is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Mobile</label>
+        <input type="text" id="mobile" formControlName="mobile" placeholder="" class="form-control form-control-sm"
+          [class.is-invalid]="submitted && mobile.errors" />
+        <div *ngIf="submitted && mobile.errors" class="invalid-feedback">
+          <div *ngIf="mobile.errors?.['required']">
+            This field is required.
+          </div>
+          <div *ngIf="mobile.errors?.['pattern']">
+            Maximum digit 10.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input id="password" type="password" formControlName="password" class="form-control form-control-sm"
+          [class.is-invalid]="submitted && password.errors" />
+        <div *ngIf="submitted && password.errors" class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']">
+            This field is required.
+          </div>
+          <div *ngIf="password.errors?.['pattern']">
+            Please enter At least one lower case letter,
+            At least one upper case letter,
+            At least special character,
+            At least one number,
+            At least 8 characters length
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm password</label>
+        <input id="confirmpassword" type="password" class="form-control form-control-sm"
+          formControlName="confirmpassword" [class.is-invalid]="submitted && confirmpassword.errors" />
+        <div *ngIf="submitted && confirmpassword.errors" class="invalid-feedback">
+          <div *ngIf="confirmpassword.errors?.['required']">
+            This field is required.
+          </div>
+          <div *ngIf="confirmpassword.errors?.['passwordMismatch']">
+            Confirm Password does not match
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <button (click)="onSubmit()" type="submit" class="btn btn-primary">Sign-up</button>
+      <br>
+
+      <!-- <p>{{form.status}}</p> -->
+      <div>
+
+        <p style="padding-top: 5px;">Already have an account?<button type="button" class="btn btn-link"
+            (click)="login()">Sign-in</button></p>
+      </div>
+
+    </form>
+  </div>
+</div>

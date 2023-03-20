@@ -1,0 +1,33 @@
+.row{
+    background :deepskyblue;
+    padding: 15px 0px 0px 0px ;
+    
+}
+/*  */
+.Ad{
+    position: relative;
+    padding-left: 35px;
+}
+.Ad i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.Show{
+    position: relative;
+    padding-left: 40px;
+}
+.Show i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+/*  */
+.check{
+    text-align: center;
+    vertical-align :middle;
+}
+.largebox{
+    width: 20px;
+    height: 20px;
+}

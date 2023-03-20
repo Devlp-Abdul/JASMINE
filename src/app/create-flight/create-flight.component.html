@@ -1,0 +1,164 @@
+<div class="container-fluid">
+    <div class="row ro">
+        <h3>Create Flight</h3>
+    </div>
+    <form [formGroup]="form">
+        <fieldset>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Direction</label>
+                </div>
+                <div class="col-5">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" value="Arrival" type="radio" name="direction"
+                                formControlName="direction" checked>
+                            Arrival
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" value="Departure" type="radio" name="direction"
+                                formControlName="direction">
+                            Departure
+                        </label>
+                    </div>
+                </div>
+                <span></span>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Origin</label>
+                </div>
+                <div class="col-5">
+                    <input id="origin" class="form-control " type="text" formControlName="origin"
+                        [class.is-invalid]="submitted && origin.errors">
+                    <span *ngIf="submitted && origin.errors" class="invalid-feedback">
+                        This field is required.
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Destination</label>
+                </div>
+                <div class="col-5">
+                    <input id="destination" class="form-control " type="text" formControlName="destination"
+                        [class.is-invalid]="submitted && destination.errors">
+                    <span *ngIf="submitted && destination.errors" class="invalid-feedback">
+                        This field is required.
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Aircraft type</label>
+                </div>
+                <div class="col-5">
+                    <select class="form-control " name="aircraft_type" formControlName="aircraft_type"
+                        [class.is-invalid]="submitted && aircraft_type.errors?.['required']">
+                        <option value="" selected disabled>--select--</option>
+                        <option *ngFor="let aircraft of Aircraft">{{aircraft}}</option>
+                    </select>
+                    <span *ngIf="submitted && aircraft_type.errors?.['required']" class="text-danger"
+                        style="font-size: medium;">
+                        This field is required.
+                    </span>
+                </div>
+
+            </div>
+            <br>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Airlines</label>
+                </div>
+                <div class="col-5">
+                    <select class="form-control" name="airlines" formControlName="airlines"
+                        [class.is-invalid]="submitted && airlines.errors?.['required']">
+                        <option value="" selected disabled>--select--</option>
+                        <option *ngFor="let airlines of Airlines">{{airlines}}</option>
+                    </select>
+                    <span *ngIf="submitted &&  airlines.errors?.['required']" class="text-danger"
+                        style="font-size: medium;">
+                        This field is required.
+                    </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Flight Code</label>
+                </div>
+                <div class="col-5">
+                    <input id="flight_code" class="form-control " type="text" formControlName="flight_code"
+                        [class.is-invalid]="submitted && flight_code.errors">
+                    <span *ngIf="submitted && flight_code.errors" class="invalid-feedback">
+                        This field is required.
+                    </span>
+                </div>
+            </div>
+            <br>
+
+            <!-- <div class="form-group row">
+                <div class="col-2">
+                    <label>Sheduled Format</label>
+                </div>
+
+                <label class="form-check-label col-2">
+                    <input class="form-check-input" type="radio" name="Sheduled Format">
+                    Date Range
+                </label>
+                <label class="form-check-label col-2">
+                    <input class="form-check-input" type="radio" name="Sheduled Format">
+                    Custome Day
+                </label>
+                <label class="form-check-label col-2">
+                    <input class="form-check-input" type="radio" name="Sheduled Format" checked>
+                    Multi Date
+                </label>
+                <span></span>
+            </div>
+            <br> -->
+
+            <div class="from-group row">
+                <div class="col-2">
+                    <label>Scheduled Date<br>and Time</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="date" name="scheduled_date" formControlName="scheduled_date"
+                        [class.is-invalid]="submitted && scheduled_date.errors?.['required'] ">
+                    <span *ngIf="submitted && scheduled_date.errors" class="invalid-feedback">
+                        This field is required.
+                    </span>
+                </div>
+            </div>
+            <br>
+
+            <!-- <div class="from-group row">
+                <div class="col-2">
+                    <label>Scheduled Time</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="time" name="scheduled_time">
+                     formControlName="scheduled_time"
+                        [class.is-invalid]="submitted && scheduled_time.errors?.['required'] ">
+                    <span *ngIf="submitted && scheduled_time.errors" class="invalid-feedback">
+                        This field is required.
+                    </span>
+                </div>
+            </div> -->
+
+
+            <div style="text-align: right;">
+                <button class="btn btn-primary" (click)="onSubmit()">Preview</button> &nbsp;
+                <a class="btn btn-secondary" href="schedule">Cancel</a>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<p>{{form.status}}</p>

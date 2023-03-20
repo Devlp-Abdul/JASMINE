@@ -1,0 +1,716 @@
+<div class="container-fluid">
+    <div class="border" style="margin: 1%;">
+        <div class="row bg">
+            <h4>TurnAround Desk</h4>
+        </div>
+        <div class="row" style="padding: 1.5%; font-size: large;">
+            <div class="col">
+                <label>TurnAround Id : </label>&nbsp;
+                <input type="text">&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary">Search</button>
+            </div>
+            <div class="col">
+                <label>Delete : </label>&nbsp;
+                <input type="text">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid" style="font-size: small;">
+    <div class="border" style="margin: 1%;">
+        <div class="row bg">
+            <h4>Turn Info</h4>
+        </div>
+        <div class="row" style="margin: 1%;">
+            <div class="col  border" style="padding: 1%;">
+                <input type="checkbox">&nbsp;
+                <label>IsTripCancelled<span class="text-danger">*</span></label>
+            </div>
+            <div class="col  border" style="padding: 1%;">
+                <label style="padding-right: 15%;">Turn-Around Type</label>
+                <input type="radio">
+                <label style="padding-right: 10%;">Fast Spin</label>
+                <input type="radio">
+                <label>Slow Spin</label>
+            </div>
+        </div>
+        <div class="row" style="margin: 1%;">
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Start Date Time</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <label>Date</label>
+            </div>
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Aircraft</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <select class="form-control form-control-sm form-select">
+                    <option value="" selected disabled>--select--</option>
+                    <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                </select>
+            </div>
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Departure Wave</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <select class="form-control form-control-sm form-select">
+                    <option value="" selected disabled>--select--</option>
+                    <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                </select>
+            </div>
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Departure Gate</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <select class="form-control form-control-sm form-select">
+                    <option value="" selected disabled>--select--</option>
+                    <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin: 1%;">
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Finish Date Time</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <label>Date</label>
+            </div>
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Registration</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <input type="text">
+            </div>
+            <div class="col-3  border" style="padding: 0.5%;">
+                <input type="checkbox">&nbsp;
+                <label>Final Wave<span class="text-danger">*</span></label>
+            </div>
+            <div class="col-1  border" style="padding: 0.5%;">
+                <label>Stand</label>
+            </div>
+            <div class="col-2  border" style="padding: 0.5%;">
+                <select class="form-control form-control-sm form-select">
+                    <option value="" selected disabled>--select--</option>
+                    <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer" style="margin: 1%;">
+            <button class="btn btn-primary" style="content: right;">Submit</button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <nav style="margin: 0 1%;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-Arrival-tab" data-bs-toggle="tab" data-bs-target="#nav-Arrival"
+                type="button" role="tab" aria-controls="nav-Arrival" aria-selected="true">Arrival</button>
+            <button class="nav-link" id="nav-Departure-tab" data-bs-toggle="tab" data-bs-target="#nav-Departure"
+                type="button" role="tab" aria-controls="nav-Departure" aria-selected="false">Departure</button>
+            <button class="nav-link" id="nav-Services-tab" data-bs-toggle="tab" data-bs-target="#nav-Services"
+                type="button" role="tab" aria-controls="nav-Services" aria-selected="false">Services</button>
+            <button class="nav-link" id="nav-Passengers-tab" data-bs-toggle="tab" data-bs-target="#nav-Passengers"
+                type="button" role="tab" aria-controls="nav-Passengers" aria-selected="false">Passengers and
+                Bags</button>
+            <button class="nav-link" id="nav-Delay-tab" data-bs-toggle="tab" data-bs-target="#nav-Delay" type="button"
+                role="tab" aria-controls="nav-Delay" aria-selected="false">Delay</button>
+
+            <!-- <div class="tab-pane fade show active border" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;"> -->
+            <!-- <div class="tab-pane fade border" id="nav-Departure" role="tabpanel" aria-labelledby="nav-Departure-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;"> -->
+            <!-- <div class="tab-pane fade border" id="nav-Services" role="tabpanel" aria-labelledby="nav-Services-tab"
+                tabindex="0" style="margin: 0 1% 5% 1%;"> -->
+            <!-- <div class="tab-pane fade show active border" id="nav-Passengers" role="tabpanel" aria-labelledby="nav-Passengers-tab"
+                tabindex="0" style="margin: 0 1% 5% 1%;"> -->
+            <!-- <div class="tab-pane fade show active border" id="nav-Delay" role="tabpanel" aria-labelledby="nav-Delay-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;"> -->
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <!-- Arrival FLIGHT INFORMATION -->
+        <!-- class="tab-pane fade show active border" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0" -->
+        <div class="tab-pane fade show active border" id="nav-Arrival" role="tabpanel" aria-labelledby="nav-Arrival-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;">
+            <div class="border" style="margin: 1%;">
+                <div class="row bg">
+                    <h4>Flight Information</h4>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Origin</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <input type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Scheduled</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Flight No#</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <input type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Estimated</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Status</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <select class="form-control form-control-sm form-select">
+                            <option value="" selected disabled>--select--</option>
+                            <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                        </select>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Touchdown</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Handler</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <input type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Arrived</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin: 1%;">
+                    <button class="btn btn-primary" style="content: right;">Submit</button>
+                </div>
+            </div>
+            <br>
+            <!--Arrival PROGRESS TRACKING -->
+            <div class="border" style="margin: 1%;">
+                <div class="row bg">
+                    <h4>PROGRESS TRACKING</h4>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <table class="table table-bordered border">
+                        <thead>
+                            <tr>
+                                <td>Arrival</td>
+                                <td>Touchdown</td>
+                                <td>Arrived</td>
+                                <td>Step On</td>
+                                <td>Left Front Door</td>
+                                <td>Left Rear Door</td>
+                                <td>Cargo 1 Door</td>
+                                <td>Cargo 2 Door</td>
+                                <td>Power Available</td>
+                                <td>Last PAX Off</td>
+                                <td>Bags Offloaded</td>
+                                <td>First Bag</td>
+                                <td>Last Bag</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Target</td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                            </tr>
+                            <tr>
+                                <td>Actual</td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                                <td><input type="text" size="5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" style="content: right;">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--DEPARTURE FLIGHTS INFORMATION -->
+        <!-- class="tab-pane fade border" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" -->
+        <div class="tab-pane fade border" id="nav-Departure" role="tabpanel" aria-labelledby="nav-Departure-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;">
+            <div class="border" style="margin: 1%;">
+                <div class="row bg">
+                    <h4>Flight Information</h4>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Destination</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <input type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Scheduled</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Flight No#</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <input type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Estimated</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Status</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <select class="form-control form-control-sm form-select">
+                            <option value="" selected disabled>--select--</option>
+                            <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                        </select>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Actual</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Dispatcher</label>
+                    </div>
+                    <div class="col-3  border" style="padding: 0.5%;">
+                        <input type="text">
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-2  border" style="padding: 0.5%;">
+                        <label>Airborne</label>
+                    </div>
+                    <div class="col-3 border" style="padding: 0.5%;">
+                        <input type="datetime-local">
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin: 1%;">
+                    <button class="btn btn-primary" style="content: right;">Submit</button>
+                </div>
+            </div>
+            <br>
+            <!--DEPARTURE PROGRESS TRACKING -->
+            <div class="border" style="margin: 1%;">
+                <div class="row bg">
+                    <h4>PROGRESS TRACKING</h4>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <table class="table table-bordered border">
+                        <thead>
+                            <tr>
+                                <td>Departure</td>
+                                <td>Gate Open</td>
+                                <td>Aircraft Boarding Started(GLB)</td>
+                                <td>Gate Closed</td>
+                                <td>Boarding Complete</td>
+                                <td>Doors Closed</td>
+                                <td>Actual / Ready for Push</td>
+                                <td>Airborne</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Target</td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                                <td><label>Time</label></td>
+                            </tr>
+                            <tr>
+                                <td>Actual</td>
+                                <td><input type="text" size="13"></td>
+                                <td><input type="text" size="13"></td>
+                                <td><input type="text" size="13"></td>
+                                <td><input type="text" size="13"></td>
+                                <td><input type="text" size="13"></td>
+                                <td><input type="text" size="13"></td>
+                                <td><input type="text" size="13"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" style="content: right;">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--SERVICES  -->
+        <div class="tab-pane fade border" id="nav-Services" role="tabpanel" aria-labelledby="nav-Services-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;">
+            <div class="border" style="margin: 1%;">
+                <div class="row bg">
+                    <h4>Additional Services</h4>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col-3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Luggage Belt</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Crew Transport</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Air Start</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Towing</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>GPU</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Water</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Toilet</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Cabin Tidy</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Degash</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Transit Clean</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Deep Clean</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Night Stop</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Night Clean</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Night Stop Checklist</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>LIAC Premium</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>De icing</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>De icing Fluid</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Misc. Revenue</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>GBS Charges</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>Additional Labour charges</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin: 1%;">
+                    <button class="btn btn-primary" style="content: right;">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- PASSENGERS AND BAGS -->
+        <div class="tab-pane fade border" id="nav-Passengers" role="tabpanel" aria-labelledby="nav-Passengers-tab"
+            tabindex="0" style="margin: 0 1% 5% 1%;">
+            <div class="border" style="margin: 1%;">
+                <div class="row" style="margin: 0 1%;">
+                    <div class="col" style="background-color: skyblue; margin: 1% 1% 0 1%;">
+                        <h4>Arrival Passengers And Bags</h4>
+                    </div>
+                    <div class="col" style="background-color: skyblue; margin: 1% 1% 0 1%;">
+                        <h4>Departure Passengers And Bags</h4>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0 1%;">
+                    <div class="col">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Adults </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Infants </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Hold Bags </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Cargo in kgs </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Specials </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Special Others </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>WCH-Romeo </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>WCH-Sierra </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>WCH-Charlie </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>UN-MINS (Unaccompanied minors) </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Wheelchairs </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Luggage Belt </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer" style="margin: 1%;">
+                            <button class="btn btn-primary" style="content: right;">Submit</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Adults </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Infants </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Bagson Booking </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Paxon Booking </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Checked Bags </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Gate Bags </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Rush Bags </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Cargo in kgs </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Specials </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Special Others </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>WCH-Romeo </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>WCH-Sierra </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>WCH-Charlie </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>UN-MINS (Unaccompanied minors) </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Deportee </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>EMA </td>
+                                    <td><input type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer" style="margin: 1%;">
+                            <button class="btn btn-primary" style="content: right;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- DELAY -->
+        <div class="tab-pane fade border" id="nav-Delay" role="tabpanel" aria-labelledby="nav-Delay-tab" tabindex="0"
+            style="margin: 0 1% 5% 1%;">
+            <div class="border" style="margin: 1%;">
+                <div class="row bg">
+                    <h4>Delay</h4>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col">
+                        <label>Delayed due to : </label>
+                        <select class="form-control form-control-sm form-select">
+                            <option value="" selected disabled>--select--</option>
+                            <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Delay Time : </label>
+                        <input class="form-control form-control-sm" type="text">
+                    </div>
+                    <div class="col">
+                        <label>Delaye Code : </label>
+                        <select class="form-control form-control-sm form-select">
+                            <option value="" selected disabled>--select--</option>
+                            <!-- <option *ngFor="let gate of Gates">{{gate}}</option> -->
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Reported by : </label>
+                        <input class="form-control form-control-sm" type="text">
+                    </div>
+                </div>
+                <div class="row" style="margin: 1%;">
+                    <div class="col">
+                        <label>Description : </label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="col">
+                        <label>Notes : </label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+
+                </div>
+                <br>
+                <div class="modal-footer" style="margin: 1%;">
+                    <button class="btn btn-primary" style="content: right;">Submit</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

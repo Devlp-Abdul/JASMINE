@@ -1,0 +1,39 @@
+.page-bg{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);   
+}
+
+.container{
+    background-color: aliceblue;
+    width: 600px;
+    height :min-content;
+    position: absolute;
+    top: 25%;
+    left: 36%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+/* .col-md-4{
+    height :600px;
+    margin: 250px 400px 300px 350px ;
+    padding: 30px;
+    width: 600px;
+    background-color: aliceblue;
+    
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.col-md-4{
+    height :max-content;
+    margin: 250px 400px 300px 350px ;
+    padding: 30px;
+    width: 600px;
+    background-color: aliceblue;
+    
+    border: 1px solid black;
+    border-radius: 10px;
+} */

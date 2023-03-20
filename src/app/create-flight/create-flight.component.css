@@ -1,0 +1,12 @@
+.ro{
+    background-color: deepskyblue;
+    padding: 15px 0px;
+}
+form{
+    border: 1px solid black;
+    font-size: large;
+    margin-top: 20px;
+}
+fieldset{
+    padding: 20px 20px;
+}
