@@ -1,16 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomePageComponent } from './home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../Nav-bar/header/nav-bar.component';
-// import { RouterModule } from '@angular/router';
-// import { LoginPageComponent } from '../login-page/login-page.component';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 fdescribe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
-  // let routerMock = { navigate: jasmine.createSpy('navigate') };
+  let mockRouter;
   let authService: SharedService;
   beforeEach(async () => {
+    mockRouter = { navigate: jasmine.createSpy('navigate') };
     await TestBed.configureTestingModule({
       imports: [
         HttpClientModule
@@ -18,10 +18,9 @@ fdescribe('HomePageComponent', () => {
       declarations: [
         HomePageComponent,
         NavBarComponent,
-        // RouterModule.forRoot([
-        //   { path: '', component: LoginPageComponent },
-        //   { path: 'login', component: LoginPageComponent },
-        // ]),
+      ],
+      providers: [
+        { provide: Router, useValue: mockRouter },        
       ]
     })
       .compileComponents();
@@ -36,25 +35,10 @@ fdescribe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('logout',()=>{
-    spyOn(component,'logout');
-    spyOn(authService,'signout').and.returnValue('any')
-    
+  it('should go signup', async(() => {
+    fixture.detectChanges();
     component.logout();
-    expect(component.logout).toBeTruthy();
-  });
-
-  // it('logout', () => {
-  //   spyOn(component,'logout');
-  //   component.logout();
-  //   expect(routerMock.navigate).toHaveBeenCalledWith(['login']);
-  //   expect(component.logout).toHaveBeenCalledTimes(1);
-  // });
-
-  // it('should go signout', (done : DoneFn) => {
-  //   component.logout()
-  //   expect(routerMock.navigate).toHaveBeenCalledWith(['login']);
-  //   done();
-  // });
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['login']);
+  }));
 
 });

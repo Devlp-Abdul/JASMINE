@@ -20,7 +20,7 @@
             <label>To date : </label>&nbsp;
             <input type="date" [min]="start" [(ngModel)]="end">&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-secondary btn-sm" style="margin-bottom: 1%;"
-                (click)="onSearch(start,end)">Search</button><br>
+                (click)="onSearch()">Search</button><br>
             <span *ngIf="search && start === undefined" class="text-danger" style="font-size: small;">
                 *This field is required.
             </span>

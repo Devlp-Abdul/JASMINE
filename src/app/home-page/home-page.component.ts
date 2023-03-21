@@ -11,7 +11,7 @@ export class HomePageComponent {
 
   constructor(private router : Router,private auth:SharedService){}
 
-  logout():any{
-    return this.auth.signout();
-  }
+  logout() {
+   return this.auth.signout();    
+  };
 }

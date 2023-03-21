@@ -10,13 +10,13 @@ export class TurnAroundDeskComponent {
   isArrival = true;
   isDeparture = false;
 
-  onArrival(){
-this.isArrival = true;
-this.isDeparture = false;
+  onArrival() {
+    this.isArrival = true;
+    this.isDeparture = false;
   }
-  onDeparture(){
-this.isDeparture = true;
-this.isArrival =false;
+  onDeparture() {
+    this.isDeparture = true;
+    this.isArrival = false;
   }
 
 }

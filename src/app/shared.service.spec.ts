@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { HttpClientModule } from '@angular/common/http';
-import { async, of } from 'rxjs';
+import { of } from 'rxjs';
 import { HttpClientTestingModule,HttpTestingController } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 
