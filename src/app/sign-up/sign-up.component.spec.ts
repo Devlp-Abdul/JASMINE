@@ -9,7 +9,7 @@ import { HomePageComponent } from '../home-page/home-page.component';
 import { SharedService } from '../shared.service';
 import { of } from 'rxjs';
 
-fdescribe('SignUpComponent', () => {
+describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
   let debugElement: DebugElement;

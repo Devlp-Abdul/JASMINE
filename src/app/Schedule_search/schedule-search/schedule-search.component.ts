@@ -36,7 +36,7 @@ export class ScheduleSearchComponent implements OnInit {
   }
 
   create() {
-    this.router.navigate(["create"]);
+    this.router.navigate(["home/create"]);
   }
 
   getdata() {

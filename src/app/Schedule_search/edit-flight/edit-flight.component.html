@@ -1,135 +1,142 @@
-<div class="container-fluid">
-    <div class="row ro">
-        <h3>Edit Flight</h3>
+<div class="main">
+    <div class="row" id="bar">
+        <label>HOME &nbsp; / &nbsp; SCHEDULE SEARCH &nbsp; / &nbsp;<span class="act">EDIT FLIGHT</span> </label>
     </div>
-
-    <fieldset>
-        <div class="form-group row">
-            <div class="col-2">
-                <label>Direction</label>
+    <div style="margin: 5% 1.5% 0 1.5%;">
+        <div class="container-fluid">
+            <div class="row bg">
+                <h3>Edit Flight</h3>
             </div>
-            <div class="col-5">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" value="Arrival" type="radio" name="direction" checked>
-                        Arrival
+
+            <fieldset style="margin-top: 2%;border: 1px solid black;padding: 1.5%;">
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Direction</label>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" value="Arrival" type="radio" name="direction" checked>
+                                Arrival
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" value="Departure" type="radio" name="direction">
+                                Departure
+                            </label>
+                        </div>
+                    </div>
+                    <span></span>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Origin</label>
+                    </div>
+                    <div class="col-5">
+                        <input id="origin" class="form-control " type="text" [(ngModel)]="flight_details.origin">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Destination</label>
+                    </div>
+                    <div class="col-5">
+                        <input id="origin" class="form-control " type="text" [(ngModel)]="flight_details.destination">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Aircraft type</label>
+                    </div>
+                    <div class="col-5">
+                        <select class="form-control" [(ngModel)]="flight_details.aircraft_Type">
+                            <option value="" selected disabled>--select--</option>
+                            <option *ngFor="let aircraft of Aircraft">{{aircraft}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                <br>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Airlines</label>
+                    </div>
+                    <div class="col-5">
+                        <select class="form-control" [(ngModel)]="flight_details.airlines">
+                            <option value="" selected disabled>--select--</option>
+                            <option *ngFor="let airlines of Airlines">{{airlines}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label>Flight Code</label>
+                    </div>
+                    <div class="col-5">
+                        <input id="origin" class="form-control " type="text" [(ngModel)]="flight_details.flight_Code">
+                    </div>
+                </div>
+                <br>
+
+                <!-- <div class="form-group row">
+                    <div class="col-2">
+                        <label>Sheduled Format</label>
+                    </div>
+    
+                    <label class="form-check-label col-2">
+                        <input class="form-check-input" type="radio" name="Sheduled Format">
+                        Date Range
                     </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" value="Departure" type="radio" name="direction">
-                        Departure
+                    <label class="form-check-label col-2">
+                        <input class="form-check-input" type="radio" name="Sheduled Format">
+                        Custome Day
                     </label>
+                    <label class="form-check-label col-2">
+                        <input class="form-check-input" type="radio" name="Sheduled Format" checked>
+                        Multi Date
+                    </label>
+                    <span></span>
                 </div>
-            </div>
-            <span></span>
-        </div>
-        <br>
-        <div class="form-group row">
-            <div class="col-2">
-                <label>Origin</label>
-            </div>
-            <div class="col-5">
-                <input id="origin" class="form-control " type="text" [(ngModel)]="flight_details.origin">
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <div class="col-2">
-                <label>Destination</label>
-            </div>
-            <div class="col-5">
-                <input id="origin" class="form-control " type="text" [(ngModel)]="flight_details.destination">
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <div class="col-2">
-                <label>Aircraft type</label>
-            </div>
-            <div class="col-5">
-                <select class="form-control" [(ngModel)]="flight_details.aircraft_Type">
-                    <option value="" selected disabled>--select--</option>
-                    <option *ngFor="let aircraft of Aircraft">{{aircraft}}</option>
-                </select>
-            </div>
+                <br> -->
 
-        </div>
-        <br>
-
-        <div class="form-group row">
-            <div class="col-2">
-                <label>Airlines</label>
-            </div>
-            <div class="col-5">
-                <select class="form-control" [(ngModel)]="flight_details.airlines">
-                    <option value="" selected disabled>--select--</option>
-                    <option *ngFor="let airlines of Airlines">{{airlines}}</option>
-                </select>
-            </div>
-        </div>
-        <br>
-
-        <div class="form-group row">
-            <div class="col-2">
-                <label>Flight Code</label>
-            </div>
-            <div class="col-5">
-                <input id="origin" class="form-control " type="text" [(ngModel)]="flight_details.flight_Code">
-            </div>
-        </div>
-        <br>
-
-        <!-- <div class="form-group row">
-                <div class="col-2">
-                    <label>Sheduled Format</label>
+                <div class="from-group row">
+                    <div class="col-2">
+                        <label>Scheduled Date<br>and Time</label>
+                    </div>
+                    <div class="col-5">
+                        <input class="form-control" type="datetime-local" [(ngModel)]="flight_details.scheduled_Date">
+                    </div>
                 </div>
+                <br>
 
-                <label class="form-check-label col-2">
-                    <input class="form-check-input" type="radio" name="Sheduled Format">
-                    Date Range
-                </label>
-                <label class="form-check-label col-2">
-                    <input class="form-check-input" type="radio" name="Sheduled Format">
-                    Custome Day
-                </label>
-                <label class="form-check-label col-2">
-                    <input class="form-check-input" type="radio" name="Sheduled Format" checked>
-                    Multi Date
-                </label>
-                <span></span>
-            </div>
-            <br> -->
+                <!-- <div class="from-group row">
+                    <div class="col-2">
+                        <label>Scheduled Time</label>
+                    </div>
+                    <div class="col-5">
+                        <input class="form-control" type="time" name="scheduled_time">
+                         formControlName="scheduled_time"
+                            [class.is-invalid]="submitted && scheduled_time.errors?.['required'] ">
+                        <span *ngIf="submitted && scheduled_time.errors" class="invalid-feedback">
+                            This field is required.
+                        </span>
+                    </div>
+                </div> -->
 
-        <div class="from-group row">
-            <div class="col-2">
-                <label>Scheduled Date<br>and Time</label>
-            </div>
-            <div class="col-5">
-                <input class="form-control" type="datetime-local" [(ngModel)]="flight_details.scheduled_Date">
-            </div>
-        </div>
-        <br>
 
-        <!-- <div class="from-group row">
-                <div class="col-2">
-                    <label>Scheduled Time</label>
+                <div style="text-align: right;">
+                    <button class="btn btn-primary" (click)="onUpdate()">Update</button> &nbsp;
+                    <!-- <a class="btn btn-secondary" href="schedule">Cancel</a> -->
                 </div>
-                <div class="col-5">
-                    <input class="form-control" type="time" name="scheduled_time">
-                     formControlName="scheduled_time"
-                        [class.is-invalid]="submitted && scheduled_time.errors?.['required'] ">
-                    <span *ngIf="submitted && scheduled_time.errors" class="invalid-feedback">
-                        This field is required.
-                    </span>
-                </div>
-            </div> -->
+            </fieldset>
 
-
-        <div style="text-align: right;">
-            <button class="btn btn-primary" (click)="onUpdate()">Update</button> &nbsp;
-            <!-- <a class="btn btn-secondary" href="schedule">Cancel</a> -->
         </div>
-    </fieldset>
-
+    </div>
 </div>

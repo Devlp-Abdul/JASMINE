@@ -1,16 +1,20 @@
-<div class="container">
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/schedule">Schedule Search</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/create_around">Create Turn Around</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
-</div>
+<header>
+  <!-- Navbar -->
+  <nav class=" navbar-expand-lg navbar-light bg-light fixed-top" style="text-align: center;padding: 1%;">
+      <div class="container-fluid">
+          <div>
+              <h4>AIRLINE MANAGEMENT SYSTEM</h4>
+          </div>
+
+      </div>
+  </nav>
+  <!-- Sidebar -->
+  <div class="sidenav">
+      <a routerLink="/home/dashboard">Dashboard</a>
+      <a routerLink="/home/schedule">Schedule Search</a>
+      <a routerLink="/home/create_around">Create TurnAround</a>
+      <!-- <a href="#">Contact</a> -->
+  </div>
+</header>
+<router-outlet></router-outlet>
+

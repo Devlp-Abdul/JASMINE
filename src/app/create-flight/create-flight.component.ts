@@ -64,6 +64,7 @@ export class CreateFlightComponent implements OnInit {
 
       console.log(this.form.value);
       console.log(this.form.value.scheduled_date);
+      // console.log(this.form.value.scheduled_time);
       this.auth.create_flightpost(this.form.value).subscribe({
         next: (res) => {
           alert(res.message);

@@ -1,7 +1,180 @@
-<app-nav-bar></app-nav-bar>
-<div class="container">
-    
-    <p>home-page works!</p>
-    <button class="btn btn-info" type="button" (click)="logout()">LOGOUT</button>
-</div>
+<div class="main">
+    <div class="row" id="bar">
+        <label>HOME &nbsp; / &nbsp; <span class="act">DASHBOARD</span> </label>
+    </div>
+    <div style="margin-top: 5%;">
+        <div class="container-fluid">
+            <div class="row bg">
+                <div class="col-9">
+                    <h4>{{current_Date}}</h4>
+                </div>
+                <div class="col" style="padding-top: 0.4%;">
+                    <input type="date">
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <nav style="margin: 2% 1% 0 1%;">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-Arrival-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Arrival" type="button" role="tab" aria-controls="nav-Arrival"
+                        aria-selected="true"><i class="fa fa-plane" style="rotate: 45deg;"></i>&nbsp; Arrival</button>
+                    <button class="nav-link" id="nav-Departure-tab" data-bs-toggle="tab" data-bs-target="#nav-Departure"
+                        type="button" role="tab" aria-controls="nav-Departure" aria-selected="false"><i
+                            class="fa fa-plane" style="rotate: -45deg;"></i>&nbsp; Departure</button>
+                    <!-- <button class="nav-link" id="nav-Combined-tab" data-bs-toggle="tab" data-bs-target="#nav-Combined"
+                        type="button" role="tab" aria-controls="nav-Combined" aria-selected="false"><i
+                            class="fa fa-list"></i>&nbsp; Combined</button> -->
 
+                </div>
+            </nav>
+
+            <div class="tab-content" id="nav-tabContent" style="margin: 0 1%;">
+
+                <div class="tab-pane fade show active border" id="nav-Arrival" role="tabpanel"
+                    aria-labelledby="nav-Arrival-tab" tabindex="0">
+                    <div style="margin: 1%;">
+                        <table class="table table-bordered border">
+                            <thead>
+                                <tr style="background-color: skyblue;">
+                                    <th>Date and Time</th>
+                                    <th>Flight</th>
+                                    <th>From</th>
+                                    <th>Airline</th>
+                                    <th>operator</th>
+                                    <th>Aircraft</th>
+                                    <th>Stand</th>
+                                    <th>Status</th>
+                                    <th>Delay Time</th>
+                                    <!-- <th>Close</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of ArrInfo">
+                                    <td>{{data.scheduled.slice(0,10)}}&nbsp;&nbsp;{{data.scheduled.slice(11,16)}}</td>
+                                    <td>{{data.flightNo}}</td>
+                                    <td>{{data.origin}}</td>
+                                    <td>{{data.aircraft}}</td>
+                                    <td>{{data.handler}}</td>
+                                    <td>{{data.aircraft}}</td>
+                                    <td>{{data.stand}}</td>
+                                    <td>
+                                        <i *ngIf="data.status === 'Arrived'" class="fa-sharp fa-solid fa-plane-arrival"
+                                            style="color:green;font-size: 150%;rotate: 3deg;"></i>
+                                        <i *ngIf="data.status === 'Scheduled'" class="fa-sharp fa-solid fa-plane"
+                                            style="color:rebeccapurple;font-size: 150%;"></i> &nbsp;
+                                        {{data.status}} on <span
+                                            *ngIf="data.status === 'Scheduled'">{{data.scheduled.slice(11,16)}}</span>
+                                        <span *ngIf="data.status === 'Arrived'">{{data.arrived}}</span>
+                                    </td>
+                                    <td><b *ngIf="data.status === 'Arrived' && data.time !== 0" style="color: red;">{{data.time}} mins
+                                            delay</b><b *ngIf="data.status === 'Scheduled'" style="color: blue;">Expected on
+                                            time</b>
+                                        <b *ngIf="data.status === 'Arrived' && data.time === 0" style="color: green ;">On time</b>
+                                    </td>
+
+                                    <!-- <td>Close</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- DEPARTURE -->
+                <div class="tab-pane fade border" id="nav-Departure" role="tabpanel" aria-labelledby="nav-Departure-tab"
+                    tabindex="0">
+                    <div style="margin: 1%;">
+                        <table class="table table-bordered border">
+                            <thead>
+                                <tr style="background-color: skyblue;">
+                                    <th>Time</th>
+                                    <th>Flight</th>
+                                    <th>To</th>
+                                    <th>Airline</th>
+                                    <th>operator</th>
+                                    <th>Aircraft</th>
+                                    <th>Stand</th>
+                                    <th>Status</th>
+                                    <th>Delay Time</th>
+                                    <!-- <th>Close</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of DepInfo">
+                                    <td>{{data.scheduled.slice(0,10)}}&nbsp;&nbsp;{{data.scheduled.slice(11,16)}}</td>
+                                    <td>{{data.flightNo}}</td>
+                                    <td>{{data.destination}}</td>
+                                    <td>{{data.aircraft}}</td>
+                                    <td>{{data.dispatcher}}</td>
+                                    <td>{{data.aircraft}}</td>
+                                    <td>{{data.stand}}</td>
+                                    <td>
+                                        <i *ngIf="data.status === 'Departed'"
+                                            class="fa-sharp fa-solid fa-plane-departure"
+                                            style="color:green;font-size: 150%; "></i>
+                                        <i *ngIf="data.status === 'Scheduled'" class="fa-sharp fa-solid fa-plane"
+                                            style="color:rebeccapurple;font-size: 150%;"></i> &nbsp;
+                                        {{data.status}} on <span
+                                        *ngIf="data.status === 'Scheduled'">{{data.scheduled.slice(11,16)}}</span>
+                                    <span *ngIf="data.status === 'Departed'">{{data.departed}}</span>
+                                    </td>
+                                    <td><b *ngIf="data.status === 'Departed' && data.time !== 0" style="color: red;">{{data.time}} mins
+                                            delay</b><b *ngIf="data.status === 'Scheduled'" style="color: blue;">Expected on
+                                            time</b>
+                                        <b *ngIf="data.status === 'Departed' && data.time === 0" style="color: green;">On time</b>
+                                    </td>
+                                    <!-- <td>Close</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- COMBINED -->
+                <div class="tab-pane fade" id="nav-Combined" role="tabpanel" aria-labelledby="nav-Combined-tab"
+                    tabindex="0">
+                    <div style="margin: 1%;">
+                        <table class="table table-bordered border">
+                            <thead>
+                                <tr style="background-color: skyblue;">
+                                    <th>Time</th>
+                                    <th>Flight</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Airline</th>
+                                    <th>operator</th>
+                                    <th>Aircraft</th>
+                                    <th>Stand</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                    <th>Close</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Time</td>
+                                    <td>Flight</td>
+                                    <td>From</td>
+                                    <td>To</td>
+                                    <td>Airline</td>
+                                    <td>operator</td>
+                                    <td>Aircraft</td>
+                                    <td>Stand</td>
+                                    <td>Status</td>
+                                    <td>Action</td>
+                                    <td>Close</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { HttpClientTestingModule,HttpTestingController } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 
-fdescribe('SharedService', () => {
+describe('SharedService', () => {
   let service: SharedService;
   let HttpClientgetspy : jasmine.SpyObj<HttpClient>;
   let HttpClientdeletespy : jasmine.SpyObj<HttpClient>;
@@ -30,6 +30,192 @@ fdescribe('SharedService', () => {
     });
     service = TestBed.inject(SharedService);
     httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  it('GetDelayTurnAroundDeskById',(done : DoneFn)  => {
+    const id = '3001';
+    service.GetDelayTurnAroundDeskById(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetDelayTurnAroundDeskById?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('GetPassengersTurnAroundDeskById',(done : DoneFn)  => {
+    const id = '3001';
+    service.GetPassengersTurnAroundDeskById(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetPassengersTurnAroundDeskById?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('PostDelayTurnAroundDesk',(done : DoneFn)  => {
+    const id = '3001';
+    service.PostDelayTurnAroundDesk(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/PostDelayTurnAroundDesk?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('POST');
+  });
+
+  it('PostPassengersTurnAroundDesk',(done : DoneFn)  => {
+    const id = '3001';
+    service.PostPassengersTurnAroundDesk(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/PostPassengersTurnAroundDesk?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('POST');
+  });
+
+  it('UpdateDelayTurnAroundDesk',(done : DoneFn)  => {
+    const id = 3001, data = {};
+    service.UpdateDelayTurnAroundDesk(id,data).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/UpdateDelayTurnAroundDesk?Id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('PUT');
+  });
+
+  it('UpdatePassengersTurnAroundDesk',(done : DoneFn)  => {
+    const id = 3001, data = {};
+    service.UpdatePassengersTurnAroundDesk(id,data).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/UpdatePassengersTurnAroundDesk?Id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('PUT');
+  });
+
+  it('UpdateDepartureTurnAroundDesk',(done : DoneFn)  => {
+    const id = 3001, data = {};
+    service.UpdateDepartureTurnAroundDesk(id,data).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/UpdateDepartureTurnAroundDesk?Id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('PUT');
+  });
+
+  it('UpdateArrivalTurnAroundDesk',(done : DoneFn)  => {
+    const id = 3001, data = {};
+    service.UpdateArrivalTurnAroundDesk(id,data).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/UpdateArrivalTurnAroundDesk?Id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('PUT');
+  });
+
+  it('UpdateTurnAroundDeskInfo',(done : DoneFn)  => {
+    const id = 3001, data = {};
+    service.UpdateTurnAroundDeskInfo(id,data).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/UpdateTurnAroundDeskInfo?Id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('PUT');
+  });
+
+  it('PostDepartureTurnAroundDesk',(done : DoneFn)  => {
+    const value = {};
+    service.PostDepartureTurnAroundDesk({}).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/PostDepartureTurnAroundDesk');
+    req.flush({});
+    expect(req.request.method).toBe('POST');
+  });
+
+  it('PostArrivalTurnAroundDesk',(done : DoneFn)  => {
+    const value = {};
+    service.PostArrivalTurnAroundDesk({}).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/PostArrivalTurnAroundDesk');
+    req.flush({});
+    expect(req.request.method).toBe('POST');
+  });
+
+  it('PostTurnAroundDeskInfo',(done : DoneFn)  => {
+    const value = {};
+    service.PostTurnAroundDeskInfo({}).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/PostTurnAroundDeskInfo');
+    req.flush({});
+    expect(req.request.method).toBe('POST');
+  });
+
+  it('GetDepartureTurnAroundDeskById',(done : DoneFn)  => {
+    const id = '3001';
+    service.GetDepartureTurnAroundDeskById(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetDepartureTurnAroundDeskById?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('GetArrivalTurnAroundDeskById',(done : DoneFn)  => {
+    const id = '3001';
+    service.GetArrivalTurnAroundDeskById(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetArrivalTurnAroundDeskById?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('GetTurnInfoById',(done : DoneFn)  => {
+    const id = '3001';
+    service.GetTurnInfoById(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetTurnInfoById?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('GetTurnInfo',(done : DoneFn)  => {
+    service.GetTurnInfo().subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetTurnInfo');
+    req.flush({});
+    expect(req.request.method).toBe('GET');
+  });
+
+  it('GetTurnAroundById',(done : DoneFn)  => {
+    const id = '3001';
+    service.GetTurnAroundById(id).subscribe((data)=>{
+      expect(data).toEqual({});
+      done();
+    });
+    const req = httpTestingController.expectOne('https://localhost:7263/api/TurnAroundDesk/GetTurnAroundById?id='+id);
+    req.flush({});
+    expect(req.request.method).toBe('GET');
   });
 
   it('should be created', () => {

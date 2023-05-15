@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { of } from 'rxjs';
-fdescribe('LoginPageComponent', () => {
+describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
   let mockRouter;

@@ -1,5 +1,5 @@
 import { style } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../Authguards/auth.guard';
@@ -13,7 +13,7 @@ import { SharedService } from '../shared.service';
 })
 export class LoginPageComponent implements OnInit{
   
-  // user : string;
+ 
   form : FormGroup;
   submitted = false;
   
@@ -37,19 +37,24 @@ export class LoginPageComponent implements OnInit{
   onSubmit(){
     this.submitted = true;  
    
-    // if(this.form.value.email == 'admin' && this.form.value.password == 'B@s$$tH123')
+    // if(this.form.value.username == 'admin' && this.form.value.password == 'B@s$$tH123')
     if(this.form.valid){
-      // console.log(this.form.value)
+      console.log(this.form.value)
       this.auth.login(this.form.value).subscribe({
         next:(res)=>{
-          // alert(res.message);
-          // console.log(res.token);
+          alert(res.message);
+          console.log(res.token);
           this.form.reset();
           this.auth.setToken(res.token);
-          this.router.navigate(['home']);
-        }
+          this.router.navigate(['dashboard']);
+         
+        },
+        // error:(err)=>{
+        //   alert(err?.error.message)
+        // }
       })
-    } 
+    }
+    
   }
 
   signup():void{

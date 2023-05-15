@@ -11,6 +11,7 @@ export class SharedService {
 
   private baseurl : string ="https://localhost:7263/api/";
   constructor(private http:HttpClient, private router:Router) { }
+
   // Sign-up & Sign-in
   signpost(val: any) {
     return this.http.post<any>(`${this.baseurl}Values/register`, val);
@@ -18,19 +19,20 @@ export class SharedService {
   login(val: any) {
     return this.http.post<any>(`${this.baseurl}Values/auth`, val);
   }
-  signout():any{
+  signout(){
     localStorage.clear();
     this.router.navigate(['login']);
   }
   setToken(Token : string){
     localStorage.setItem('Token',Token)
   }
-  getToken():string{
+  getToken(){
     return localStorage.getItem('Token')
   }
   isLoggedIn():boolean{
     return !!localStorage.getItem('Token')
   }
+
   // Schedule_Search
   create_flightpost(val:any){
     return this.http.post<any>(`${this.baseurl}Create_Flight/create_flight`, val);
@@ -41,7 +43,7 @@ export class SharedService {
   get_flightsbydate(val:string){
     return this.http.get<any>(`${this.baseurl}Create_Flight/get_flightsbydate?date=${val}`);
   }
-  get_flightsbyid(val:string){
+  get_flightsbyid(val:any){
     return this.http.get<any>(`${this.baseurl}Create_Flight/getflightsbyid?id=${val}`);
   }
   DeleteFlight(id:number){
@@ -50,6 +52,7 @@ export class SharedService {
   Update_flight(id:number,data : any){
     return this.http.put<any>(`${this.baseurl}Create_Flight/Update_flight?Id=${id}`,data);
   }
+
   // TurnAround
   ArrivalFlights(){
     return this.http.get<any>(`${this.baseurl}TurnAround/ArrivalFlights`);
@@ -68,5 +71,68 @@ export class SharedService {
   }
   CreateTurnAround(val:any){
     return this.http.post<any>(`${this.baseurl}TurnAround/CreateTurnAround`, val);
+  }
+
+  // TURNAROUND DESK
+  GetTurnAroundById(val : string){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetTurnAroundById?id=${val}`);
+  }
+  GetTurnInfo(){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetTurnInfo`);
+  }
+  GetTurnInfoById(val : string){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetTurnInfoById?id=${val}`);
+  }
+  PostTurnAroundDeskInfo(val:any){
+    return this.http.post<any>(`${this.baseurl}TurnAroundDesk/PostTurnAroundDeskInfo`,val);
+  }
+  UpdateTurnAroundDeskInfo(id:number,data : any){
+    return this.http.put<any>(`${this.baseurl}TurnAroundDesk/UpdateTurnAroundDeskInfo?Id=${id}`,data);
+  }
+  GetArrivalTurnAroundDesk(){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetArrivalTurnAroundDesk`);
+  }
+  GetArrivalTurnAroundDeskById(val : any){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetArrivalTurnAroundDeskById?id=${val}`);
+  }
+  PostArrivalTurnAroundDesk(val:any){
+    return this.http.post<any>(`${this.baseurl}TurnAroundDesk/PostArrivalTurnAroundDesk`,val);
+  }
+  UpdateArrivalTurnAroundDesk(id:number,data : any){
+    return this.http.put<any>(`${this.baseurl}TurnAroundDesk/UpdateArrivalTurnAroundDesk?Id=${id}`,data);
+  }
+  GetDepartureTurnAroundDesk(){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetDepartureTurnAroundDesk`);
+  }
+  GetDepartureTurnAroundDeskById(val : any){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetDepartureTurnAroundDeskById?id=${val}`);
+  }
+  PostDepartureTurnAroundDesk(val:any){
+    return this.http.post<any>(`${this.baseurl}TurnAroundDesk/PostDepartureTurnAroundDesk`,val);
+  }
+  UpdateDepartureTurnAroundDesk(id:number,data : any){
+    return this.http.put<any>(`${this.baseurl}TurnAroundDesk/UpdateDepartureTurnAroundDesk?Id=${id}`,data);
+  }
+  GetPassengersTurnAroundDeskById(val : any){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetPassengersTurnAroundDeskById?id=${val}`);
+  }
+  PostPassengersTurnAroundDesk(val:any){
+    return this.http.post<any>(`${this.baseurl}TurnAroundDesk/PostPassengersTurnAroundDesk?id=${val}`,val);
+  }
+  UpdatePassengersTurnAroundDesk(id:number,data : any){
+    return this.http.put<any>(`${this.baseurl}TurnAroundDesk/UpdatePassengersTurnAroundDesk?Id=${id}`,data);
+  }
+  GetDelayTurnAroundDeskById(val : any){
+    return this.http.get<any>(`${this.baseurl}TurnAroundDesk/GetDelayTurnAroundDeskById?id=${val}`);
+  }
+  PostDelayTurnAroundDesk(val:any){
+    return this.http.post<any>(`${this.baseurl}TurnAroundDesk/PostDelayTurnAroundDesk?id=${val}`,val);
+  }
+  UpdateDelayTurnAroundDesk(id:number,data : any){
+    return this.http.put<any>(`${this.baseurl}TurnAroundDesk/UpdateDelayTurnAroundDesk?Id=${id}`,data);
+  }
+
+  SendRequest(email : string){
+    return this.http.post<any>(`${this.baseurl}Auth/send-reset-email/${email}`,email);
   }
 }

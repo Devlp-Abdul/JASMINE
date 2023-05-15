@@ -1,101 +1,119 @@
-<div class="container-fluid ">
-    <div class="row justify-content-between">
-        <div class="col">
-            <h2 style="padding-top: 10px;">{{current_Date}}</h2>
+<div class="main">
+    <!-- <div class="form-control"  id="bar" style=" background-color: black;width: 100vmax;padding: 1%; ">
+        
+    </div> -->
+
+    <div style="margin-top: 1%;padding-top: 0%;">
+        <div class="container-fluid">
+            <div class="row" style="background-color: black;padding: 0.5%;margin-bottom: 1.5%;width: 100vmax;">
+                <label style="color: white;">HOME &nbsp; / &nbsp; <span class="act">SCHEDULE SEARCH</span> </label>
+            </div>
+           
+            <div class="row bg" style="margin: 0 1%;">
+                <div class="col-9">
+                    <h4>{{current_Date}}</h4>
+                </div>
+                <div class="col">
+                    <!-- <mat-form-field appearance="fill">
+                        <input matInput ng-click="mat-datepicker-toggle" [matDatepicker]="picker"
+                            [matDatepickerFilter]="dateFilter" [placeholder]="current_Date" (click)="picker.open()"
+                            name="scheduled" formControlName="scheduled">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp; -->
+                    <input type="date" [(ngModel)]="term">
+                </div>
+                <div class="col" style="padding-bottom: 0.5%;">
+                    <button class="btn btn-secondary" type="submit" (click)="search(term)">Search</button>
+                </div>
+            </div>
         </div>
-        <div class="col" style="text-align: right;">
-            <!-- <mat-form-field appearance="fill">
-                    <input matInput ng-click="mat-datepicker-toggle" [matDatepicker]="picker"
-                        [matDatepickerFilter]="dateFilter" [placeholder]="current_Date" (click)="picker.open()"
-                        name="scheduled" formControlName="scheduled">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>&nbsp;&nbsp;&nbsp; -->
-            <input type="date" [(ngModel)]="term">
-            <button class="btn btn-secondary" style="font-size: 20px;" type="submit"
-                (click)="search(term)">Search</button>
+        <hr style="margin:  1%;">
+        <div class="container-fluid">
+            <div style="margin: 0 1%;">
+                <!-- <button class="btn btn-secondary Ad"><i class="fa fa-plane fa-lg"></i>Ad hoc only</button>&nbsp; -->
+                <button class="btn btn-secondary Ad"><i class="fa fa-plane fa-lg" ></i> &nbsp;Deleted only</button>&nbsp;
+                <button class="btn btn-primary Show"><i class="fa fa-list fa-lg"></i> &nbsp;Show all</button>&nbsp;
+                <button class="btn btn-danger Ad"><i class="fa fa-trash fa-lg"></i> &nbsp;Delete all selected</button>&nbsp;
+            </div>
         </div>
+
+        <div class="container-fluid" style="text-align: end;">
+            <div style="margin: 0 1%;">
+                <button class="btn btn-success" (click)="create()">Create flight / Ad hoc</button>
+            </div>
+        </div>
+        <br>
+        <h3 style="margin: 0 1%;" *ngIf="flight_data?.length === 0"> No Flights Found!</h3>
+        <div class="container-fluid" *ngIf="flight_data?.length !== 0">
+            <div style="margin: 0 1%;">
+                <table class="table table-bordered border ">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>Expected time</th>
+                            <th>Direction</th>
+                            <th>Flight code</th>
+                            <th>Aircraft</th>
+                            <th>Scheduled</th>
+                            <th>Turnaround</th>
+                            <th>Actions</th>
+                            <th>Select all</th>
+                        </tr>
+                    </thead>
+                    <!-- <tr>
+                <td>time</td>
+                <td>arrival</td>
+                <td>code</td>
+                <td>A435</td>
+                <td>Scheduled</td>
+                <td>Turnaround</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="check">
+                    <input class="largebox" type="checkbox">
+                </td>
+            </tr> -->
+                    <tbody>
+                        <tr *ngFor="let data of flight_data">
+                            <td>{{data.scheduled_Date | slice:0:10}}
+                                <!-- &nbsp;&nbsp;{{data.scheduled_Date | slice:11:16}} -->
+                            </td>
+                            <td>{{data.direction}}</td>
+                            <td>{{data.flight_Code}}</td>
+                            <td>{{data.aircraft_Type}}</td>
+                            <td>schedule</td>
+                            <td>Turnaround</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" [routerLink]="['/home/edit',data.id]">Edit</a></li>
+                                        <li><a class="dropdown-item" [routerLink]="['/home/delete',data.id]">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="check">
+                                <input class="largebox" type="checkbox">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
+    <!-- *ngIf="data.scheduled_Date.slice(10) === term" -->
 </div>
-<hr>
-<div class="container-fluid">
-    <!-- <button class="btn btn-secondary Ad"><i class="fa fa-plane fa-lg"></i>Ad hoc only</button>&nbsp; -->
-    <button class="btn btn-secondary Ad"><i class="fa fa-plane fa-lg"></i>Deleted only</button>&nbsp;
-    <button class="btn btn-primary Show"><i class="fa fa-list fa-lg"></i>Show all</button>&nbsp;
-    <button class="btn btn-danger Ad"><i class="fa fa-trash fa-lg"></i>Delete all selected</button>&nbsp;
-</div>
-
-<div class="container-fluid" style="text-align: end;">
-    <button class="btn btn-success" (click)="create()">Create flight / Ad hoc</button>
-</div>
-<br>
-<h3 *ngIf="flight_data?.length === 0"> No Flights Found!</h3>
-<div class="container-fluid" *ngIf="flight_data?.length !== 0">
-    <table class="table table-bordered  ">
-        <thead>
-            <tr class="table-primary">
-                <th>Expected time</th>
-                <th>Direction</th>
-                <th>Flight code</th>
-                <th>Aircraft</th>
-                <th>Scheduled</th>
-                <th>Turnaround</th>
-                <th>Actions</th>
-                <th>Select all</th>
-            </tr>
-        </thead>
-        <!-- <tr>
-            <td>time</td>
-            <td>arrival</td>
-            <td>code</td>
-            <td>A435</td>
-            <td>Scheduled</td>
-            <td>Turnaround</td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Action
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item" href="#">Delete</a></li>
-                    </ul>
-                </div>
-            </td>
-            <td class="check">
-                <input class="largebox" type="checkbox">
-            </td>
-        </tr> -->
-
-        <tr *ngFor="let data of flight_data">
-            <td>{{data.scheduled_Date | slice:0:10}}
-                <!-- &nbsp;&nbsp;{{data.scheduled_Date | slice:11:16}} -->
-            </td>
-            <td>{{data.direction}}</td>
-            <td>{{data.flight_Code}}</td>
-            <td>{{data.aircraft_Type}}</td>
-            <td>schedule</td>
-            <td>Turnaround</td>
-            <td>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Action
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" [routerLink]="['/edit',data.id]">Edit</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['/delete',data.id]">Delete</a></li>
-                    </ul>
-                </div>
-            </td>
-            <td class="check">
-                <input class="largebox" type="checkbox">
-            </td>
-        </tr>
-       
-    </table>
-</div>
-
-
-<!-- *ngIf="data.scheduled_Date.slice(10) === term" -->

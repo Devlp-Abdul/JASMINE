@@ -8,7 +8,7 @@ export class MatchPasswordService {
 
   constructor() { }
 
-  matchPassword(password: string, confirmPassword: string){
+  matchPassword(password: string, confirmPassword: string) {
     return (formGroup: AbstractControl): ValidationErrors | null => {
       const passwordControl = formGroup.get(password);
       const confirmPasswordControl = formGroup.get(confirmPassword);

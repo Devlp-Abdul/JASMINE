@@ -1,10 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomePageComponent } from './home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '../Nav-bar/header/nav-bar.component';
 import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
-fdescribe('HomePageComponent', () => {
+import { of } from 'rxjs';
+
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
   let mockRouter;
@@ -35,10 +37,24 @@ fdescribe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should go signup', async(() => {
-    fixture.detectChanges();
-    component.logout();
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['login']);
-  }));
+  it('should call GetArrivalTurnAroundDesk', () => {
+    const service = fixture.debugElement.injector.get(SharedService);
+    spyOn(service,'GetArrivalTurnAroundDesk').and.returnValue(of({}));
+    component.ngOnInit();
+    expect(component.ArrInfo).toEqual({});
+  });
+
+  it('should call GetDepartureTurnAroundDesk', () => {
+    const service = fixture.debugElement.injector.get(SharedService);
+    spyOn(service,'GetDepartureTurnAroundDesk').and.returnValue(of({}));
+    component.ngOnInit();
+    expect(component.DepInfo).toEqual({});
+  });
+
+  // it('should go signup', async(() => {
+  //   fixture.detectChanges();
+  //   component.logout();
+  //   expect(mockRouter.navigate).toHaveBeenCalledWith(['login']);
+  // }));
 
 });

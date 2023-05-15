@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {  CanActivate,  Router,   } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { SharedService } from '../shared.service';
 
 @Injectable({
@@ -8,7 +9,6 @@ import { SharedService } from '../shared.service';
 export class AuthGuard implements CanActivate {
 
   constructor (private auth : SharedService, private router : Router){}
-  
   canActivate():boolean {
     if(this.auth.isLoggedIn()){
       return true;

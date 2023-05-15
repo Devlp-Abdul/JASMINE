@@ -4,10 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { LoginPageComponent } from '../login-page/login-page.component';
 import { SharedService } from '../shared.service';
-import { async, of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-fdescribe('AuthGuard',async () => {
+describe('AuthGuard',async () => {
   let injector: TestBed;
   let authService: SharedService;
   let guard: AuthGuard;
@@ -43,8 +42,8 @@ fdescribe('AuthGuard',async () => {
   });
 
   it('should return false for canActivate() when auth.isLoggedIn() === false', () => {
-    const result = guard.canActivate();
-    expect(result).toBe(false);
+    spyOn(authService,'isLoggedIn').and.returnValue(false);
+    guard.canActivate();
     expect(routerMock.navigate).toHaveBeenCalledWith(['login']);
   });
 

@@ -1,48 +1,36 @@
-.bg{
+.main {
+    margin-top: 3.9%;
+    margin-left: 200px;/* Same as the width of the sidenav */
+    overflow-x: hidden;
+
+}
+
+#bar{
+    padding: 0.6%;
+    padding-top: 1%;
+    background-color: #111111;
+    margin-bottom: 2%;
+    position: fixed;
+    width: 100%;
+    color: white;
+}
+
+.act{
+color:rgb(1, 255, 255);
+}
+.bg {
     background-color: skyblue;
     padding: 0.1%;
     margin: 0.1%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
-/* <!-- <div class="row" style="margin: 1% 1% 0% 1%;">
-    <div class="col border" style="padding: 0.5%;">
-        <label>Arrival</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Touchdown</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Arrived</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Step On</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Left Front Door</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Left Rear Door</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Cargo 1 Door</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Cargo 2 Door</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Power Available</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Last PAX Off</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Bags Offloaded</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>First Bag</label>
-    </div>
-    <div class="col border" style="padding: 0.5%;">
-        <label>Last Bag</label>
-    </div>
-</div> --> */
+input:invalid {
+    border : 2px solid red ;
+}
+

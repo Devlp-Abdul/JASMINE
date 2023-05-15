@@ -1,6 +1,25 @@
+.main {
+    margin-top: 3.5%;
+    margin-left: 200px;/* Same as the width of the sidenav */
+}
+
+#bar{
+    padding: 0.6%;
+    padding-top: 1.4%;
+    background-color: #111111;
+    margin-bottom: 2%;
+    position: fixed;
+    width: 100%;
+    color: white;
+}
+
+.act{
+color:rgb(1, 255, 255);
+}
 .bg{
     background-color: skyblue;
-    padding: 1%;
+    padding: 0.5%;
+   
 }
 h4{
     text-align: center;
